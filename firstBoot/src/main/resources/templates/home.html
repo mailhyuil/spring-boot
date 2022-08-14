@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>home</h1>
+<th:block th:if="${session.USER != null}">
+    <h2 th:text="|${session.USER?.nickname}님 안녕하세요!|"></h2>
+    <a th:href="@{/user/logout}">logout</a>
+</th:block>
+<th:block th:if="${session.USER == null}">
+    <a th:href="@{/user/login}">login</a>
+    <a th:href="@{/user/join}">join</a>
+</th:block>
+<a th:href="@{/bbs/board}">게시판</a>
+</body>
+</html>

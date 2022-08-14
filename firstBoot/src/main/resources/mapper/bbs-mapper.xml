@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sb.firstboot.repository.BbsDao">
+    <select id="getBoardListCnt" resultType="int">
+        select count(*) as listCnt from bbs
+    </select>
+
+    <select id="getBoardList" resultType="Bbs">
+        SELECT * from bbs limit #{cri}, #{LIST_SIZE}
+    </select>
+</mapper>
