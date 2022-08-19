@@ -24,7 +24,7 @@ public class Pagination {
         this.PAGE_SIZE = 3;
         this.LIST_SIZE = 5;
 
-        this.theLastPage = (int) Math.ceil((float)totalListSize / PAGE_SIZE); // * int값으로만 나누면 자동 형변환 돼버린다
+        this.theLastPage = (int) Math.ceil((float)totalListSize / LIST_SIZE); // * int값으로만 나누면 자동 형변환 돼버린다
 
         this.currentPage = currentPage;
 
@@ -34,7 +34,7 @@ public class Pagination {
         this.endPage = startPage+(PAGE_SIZE-1);
         this.endPage = endPage > theLastPage ? theLastPage : endPage; // 마지막 번호가 최종 페이지 번호보다 크면 최종 페이지 번호 반환
 
-        this.cri = (currentPage-1) * PAGE_SIZE;
+        this.cri = (currentPage-1) * LIST_SIZE;
 
         //이전 버튼 상태
         this.prev = startPage == 1 ? false : true;

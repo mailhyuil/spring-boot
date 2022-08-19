@@ -1,6 +1,7 @@
 package com.sb.firstboot.service.impl;
 
 import com.sb.firstboot.domain.User;
+import com.sb.firstboot.repository.UserDao;
 import com.sb.firstboot.repository.UserRepository;
 import com.sb.firstboot.service.UserService;
 import org.apache.ibatis.javassist.bytecode.DuplicateMemberException;
@@ -8,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private UserDao userDao;
     @Override
     public int join(User user) throws DuplicateMemberException {
 
@@ -34,5 +37,13 @@ public class UserServiceImpl implements UserService {
             return 1;
         }
         return 0;
+    }
+
+    public List<User> selectAll() {
+        return null;
+    }
+
+    public User findById(String username) {
+        return userDao.findById(username);
     }
 }

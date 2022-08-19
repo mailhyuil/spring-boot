@@ -4,11 +4,11 @@
 
 <mapper namespace="com.sb.firstboot.repository.UserDao">
     <select id="selectAll" resultType="User">
-        SELECT * FROM tbl_users
+        SELECT * FROM users
     </select>
 
     <select id="findById" resultType="User">
-        SELECT * FROM tbl_users WHERE username = #{username}
+        SELECT * FROM users WHERE username = #{username}
     </select>
 
     <insert id="insert" parameterType="User"></insert>

@@ -7,9 +7,10 @@
 </head>
 <body>
 <h1>글쓰기</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <input name="title" type="text" placeholder="제목을 입력해주세요"/>
     <textarea name="content" placeholder="글을 작성해주세요"></textarea>
+    <input name="file" type="file">
     <button>글작성</button>
 </form>
 </body>

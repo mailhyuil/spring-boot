@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>안녕</h1>
+<form method="post">
+    <div>
+        <label>ISBN</label>
+        <input name="isbn" placeholder="isbn" th:value="${value.isbn}">
+    </div>
+    <div>
+        <label>제목</label>
+        <input name="title" placeholder="title" th:value="${value.title}">
+    </div>
+    <div>
+        <label>출판사</label>
+        <input name="comp" placeholder="comp" th:value="${value.comp}">
+    </div>
+    <div>
+        <label>저자</label>
+        <input name="author" placeholder="author" th:value="${value.author}">
+    </div>
+    <div>
+        <label>출판일</label>
+        <input name="pubdate" placeholder="pubdate" th:value="${value.pubdate}">
+    </div>
+    <div>
+        <label>가격</label>
+        <input name="price" placeholder="price" th:value="${value.price}">
+    </div>
+    <button>저장</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>isbn</th>
+        <th>제목</th>
+        <th>출판사</th>
+        <th>저자</th>
+        <th>출판일</th>
+        <th>가격</th>
+    </tr>
+    </thead>
+    <tbody style="cursor: pointer">
+        <tr th:each="book:${BOOKLIST}"
+            th:attr="data-isbn=${book.isbn}">
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.comp}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.pubdate}"></td>
+            <td th:text="${book.price}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const books_table = document.querySelector("table");
+    books_table.addEventListener("click",(e)=>{
+        if(e.target.tagName !== "TH"){
+        const isbn = e.target.closest("TR")?.dataset.isbn;
+        location.href = `/?isbn=${isbn}`;
+        }
+    })
+    /*]]>*/
+</script>
+</html>

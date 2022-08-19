@@ -2,7 +2,9 @@ package com.sb.firstboot.domain;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Getter
 @Setter
@@ -21,4 +23,6 @@ public class Bbs {
     private String date;
     private String time;
     private String content;
+    private String img;
+    private String original_img;
 }

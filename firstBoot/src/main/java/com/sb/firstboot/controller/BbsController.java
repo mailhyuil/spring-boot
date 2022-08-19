@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/bbs")
@@ -52,15 +56,26 @@ public class BbsController {
     }
 
     @PostMapping ("/insert")
-    public String insert(Bbs bbs, HttpSession session){
+    public String insert(Bbs bbs, HttpSession session, MultipartFile file){
         User loggedInUser = (User) session.getAttribute("USER");
         Date date = new Date(System.currentTimeMillis());
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+        bbs.setOriginal_img(file.getOriginalFilename());
+        String uuid = UUID.randomUUID().toString();
+        String uuidImg = uuid+file.getOriginalFilename();
+        bbs.setImg(uuidImg);
         bbs.setDate(dateFormat.format(date));
         bbs.setTime(timeFormat.format(date));
         bbs.setUsername(loggedInUser.getUsername());
+
+        File uploadFile = new File(uuidImg);
+        try {
+            file.transferTo(uploadFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         bbsService.insertBbs(bbs);
 
@@ -71,6 +86,10 @@ public class BbsController {
     public String detail(Model model, long id){
         Bbs bbs = bbsService.findBbsById(id);
         model.addAttribute("BBS", bbs);
+        return null;
+    }
+    @GetMapping("/infinity")
+    public String infinity(){
         return null;
     }
 }

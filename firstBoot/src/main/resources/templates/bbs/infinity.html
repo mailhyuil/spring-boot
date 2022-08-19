@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="height:200vh">
+<h1>infinity scroll</h1>
+<ul>
+    <li class="hi">
+        <h1>hi</h1>
+    </li>
+</ul>
+</body>
+<script>
+    const hi = document.querySelector(".hi");
+    const ul = hi.parentNode;
+    console.log(ul);
+    console.log(window.innerHeight)
+    window.addEventListener("scroll",()=>{
+        if(window.scrollY === window.innerHeight){
+            const li = document.createElement("li");
+            const h1 = document.createElement("h1");
+            h1.textContent = "HELLO";
+            li.appendChild(h1);
+
+            ul.appendChild(li);
+        }
+    })
+</script>
+</html>
