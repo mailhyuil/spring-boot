@@ -26,6 +26,7 @@ public class HomeController {
         List<BookVO> bookList = bookService.selectAll();
 
         Optional<BookVO> book = bookService.findById(isbn);
+        log.debug("findByData {}", book);
 
         BookVO bookVO = book.orElse(new BookVO());
 
