@@ -88,8 +88,13 @@ public class BbsController {
         model.addAttribute("BBS", bbs);
         return null;
     }
-    @GetMapping("/infinity")
+    @GetMapping("/get/img")
     public String infinity(){
+
+        return null;
+    }
+    @GetMapping("/video")
+    public String video(){
         return null;
     }
 }

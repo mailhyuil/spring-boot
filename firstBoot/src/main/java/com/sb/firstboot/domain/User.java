@@ -21,7 +21,4 @@ public class User {
     private String realname;
     private String nickname;
 
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List<Bbs> bbs = new ArrayList<>();
 }

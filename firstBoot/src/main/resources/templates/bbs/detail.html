@@ -10,6 +10,6 @@
 <h1 th:text="${BBS.title}"></h1>
 <h5 th:text="${BBS.username}"></h5>
 <h2 th:text="${BBS.content}"></h2>
-<img th:src="|@{/upload/}${BBS.img}|"/>
+<img th:if="${BBS.img != null}" th:src="|@{/upload/}${BBS.img}|"/>
 </body>
 </html>
