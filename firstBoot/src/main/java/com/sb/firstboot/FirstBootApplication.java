@@ -14,9 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EntityScan("com.sb.firstboot.domain")
 @MapperScan(value = {"com.sb.firstboot.repository"})
 public class FirstBootApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(FirstBootApplication.class, args);
 	}
-
 }
