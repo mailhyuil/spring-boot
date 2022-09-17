@@ -1,0 +1,16 @@
+# YAML 설정 파일
+
+spring:
+  devtools:
+    remote:
+      restart:
+        enabled: true
+    restart:
+      enabled: true
+  mvc:
+    static-path-pattern: /static/**
+  web:
+    resources:
+      static-locations: classpath:static/
+logging:
+  config: classpath:logback.xml

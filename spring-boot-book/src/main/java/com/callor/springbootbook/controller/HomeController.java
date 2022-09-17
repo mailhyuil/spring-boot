@@ -32,7 +32,7 @@ public class HomeController {
 
         model.addAttribute("value", bookVO);
         model.addAttribute("BOOKLIST", bookList);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/")

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include/head"/>
+</head>
+<body>
+<th:block th:include="include/layout :: nav"></th:block>
+    <h1>로그인</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+    <input class="form-control" name="username" id="username" placeholder="username">
+        <label for="password">Password</label>
+    <input class="form-control" name="password" id="password" type="password" placeholder="password">
+    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+    <button>로그인</button>
+    </div>
+</form>
+<th:block th:include="include/layout :: footer"></th:block>
+</body>
+</html>

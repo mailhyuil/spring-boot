@@ -11,10 +11,9 @@ public class HomeController {
 
     @Autowired
     UserService userService;
+
     @GetMapping("/")
     public String home(){
-
-        System.out.println(userService.findById("sb"));
         return "home";
     }
 

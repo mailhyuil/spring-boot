@@ -44,7 +44,7 @@ public class UserController {
             System.out.println("로그인 성공!");
             return "redirect:/";
         }else{
-            return "redirect:/user/login?error";
+            return "redirect:/user/login";
         }
     }
     @GetMapping("/logout")
